@@ -1,0 +1,8 @@
+{
+  "intended_model_marker": "your-intended-model",
+  "handoff_path": "./.model-sentinel/events.jsonl",
+  "state_path": "./.model-sentinel/state.json",
+  "busy_probe_command": "",
+  "on_event_command": "",
+  "auto_switch": false
+}

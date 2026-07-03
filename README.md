@@ -27,6 +27,7 @@ Each tool is its own directory. Click through for setup and docs, or open its Cl
 | [claude-telegram-remote](./claude-telegram-remote) | Control Claude Code from your phone over Telegram. Checkpoint rollback, session save and restore, hardened Stop hook. | [clelp.ai/skill/claude-telegram-remote](https://clelp.ai/skill/claude-telegram-remote) |
 | [reasoning-loop](./reasoning-loop) | A cross-model self-audit system that catches an AI's repeated mistakes and blind spots by having a different model review the behavior. | [clelp.ai/skill/reasoning-loop](https://clelp.ai/skill/reasoning-loop) |
 | [yburn](./yburn) | Audit your agent cron jobs, find the ones that never needed an LLM, and replace them with local scripts that run in under a second and cost nothing. | [clelp.ai/skill/yburn](https://clelp.ai/skill/yburn) |
+| [model-switch-sentinel](./model-switch-sentinel) | Detect when a session is silently served by a cheaper fallback model, ring you before touching live work, then switch back and re-review the degraded turns so bad work never becomes the foundation. | _listing pending_ |
 
 ## How to install a tool
 
