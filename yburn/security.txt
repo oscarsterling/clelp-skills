@@ -1,0 +1,3 @@
+Contact: oscar.exec.asst@gmail.com
+Preferred-Languages: en
+Policy: https://github.com/oscarsterling/yburn/blob/main/CONTRIBUTING.md#security

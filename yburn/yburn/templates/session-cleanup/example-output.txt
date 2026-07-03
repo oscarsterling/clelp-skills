@@ -1,0 +1,9 @@
+*Session Cleanup Report*
+
+*Checked:* 12 session(s)
+*Threshold:* 2 hour(s)
+*Matches:* 1 stuck session(s)
+*Result:* 1 session(s) killed
+
+*Stuck Sessions:*
+- `nightly-research-loop` (sess_abc123) age=5.4h

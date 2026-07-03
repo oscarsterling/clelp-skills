@@ -1,0 +1,15 @@
+{
+  "name": "session-cleanup",
+  "description": "Detects and kills stuck or zombie OpenClaw sessions that have been running longer than a configurable threshold",
+  "version": "1.0",
+  "match_keywords": ["session", "cleanup", "stuck", "zombie", "kill", "prune", "sessions"],
+  "replaces_patterns": ["stuck session", "session cleanup", "kill sessions", "zombie session"],
+  "parameters": [
+    {"name": "max_session_age_hours", "type": "int", "default": 2, "description": "Kill sessions older than this many hours"},
+    {"name": "dry_run", "type": "bool", "default": true, "description": "If true, report but do not kill"},
+    {"name": "exclude_session_labels", "type": "list", "default": [], "description": "Session labels to never kill"}
+  ],
+  "output_format": "telegram_markdown",
+  "requires": [],
+  "replaces_patterns": ["stuck session", "session cleanup", "kill sessions", "zombie session"]
+}

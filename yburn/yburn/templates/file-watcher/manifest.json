@@ -1,0 +1,25 @@
+{
+  "name": "file-watcher",
+  "description": "Checks if specified files changed since last run, reports diffs",
+  "version": "1.0",
+  "match_keywords": ["file", "watch", "change", "modified", "monitor", "diff", "track"],
+  "replaces_patterns": ["file watch", "file monitor", "file change", "file modified"],
+  "parameters": [
+    {
+      "name": "watch_paths",
+      "type": "list",
+      "required": true,
+      "default": [],
+      "description": "List of file paths to watch for changes"
+    },
+    {
+      "name": "state_dir",
+      "type": "str",
+      "required": false,
+      "default": "~/.yburn/state",
+      "description": "Directory to store last-seen file state"
+    }
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

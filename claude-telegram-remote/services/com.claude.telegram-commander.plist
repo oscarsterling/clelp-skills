@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.claude.telegram-commander</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/usr/bin/python3</string>
+        <string>/Users/YOUR_USERNAME/claude-telegram-remote/scripts/telegram-commander.py</string>
+    </array>
+    <key>WorkingDirectory</key>
+    <string>/Users/YOUR_USERNAME/claude-telegram-remote</string>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/YOUR_USERNAME/claude-telegram-remote/commander-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/YOUR_USERNAME/claude-telegram-remote/commander-stderr.log</string>
+</dict>
+</plist>

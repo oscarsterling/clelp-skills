@@ -1,0 +1,25 @@
+{
+  "name": "git-backup-status",
+  "description": "Checks last commit date, unpushed commits, and dirty files for git repos",
+  "version": "1.0",
+  "match_keywords": ["git", "backup", "commit", "push", "status", "stale", "repo"],
+  "replaces_patterns": ["git backup", "git status", "git health", "backup status"],
+  "parameters": [
+    {
+      "name": "repo_paths",
+      "type": "list",
+      "required": true,
+      "default": [],
+      "description": "List of git repository paths to check"
+    },
+    {
+      "name": "stale_hours",
+      "type": "int",
+      "required": false,
+      "default": 48,
+      "description": "Alert if last commit is older than this many hours"
+    }
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

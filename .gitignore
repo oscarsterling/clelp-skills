@@ -1,0 +1,5 @@
+MIGRATION.md
+logs/
+.claude/
+__pycache__/
+*.pyc

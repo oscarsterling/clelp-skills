@@ -1,0 +1,14 @@
+{
+  "name": "log-scanner",
+  "description": "Scans log files for configured error patterns and reports match counts",
+  "version": "1.0",
+  "match_keywords": ["log", "logs", "scan", "scanner", "error", "regex", "grep", "alert"],
+  "replaces_patterns": ["log scan", "scan logs", "error log scanner", "grep logs"],
+  "parameters": [
+    {"name": "log_paths", "type": "list", "default": [], "description": "Log files to scan"},
+    {"name": "error_patterns", "type": "list", "default": ["ERROR", "CRITICAL", "Traceback"], "description": "Regex patterns to scan for"},
+    {"name": "alert_threshold", "type": "int", "default": 1, "description": "Alert if total matches exceed this threshold"}
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

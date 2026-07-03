@@ -1,0 +1,57 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "yburn"
+version = "1.4.1"
+description = "Why burn tokens? Audit AI agent cron jobs, replace mechanical ones with local scripts. Includes yburn-health (system monitor) and yburn-watch (uptime monitor)."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.9"
+authors = [
+    {name = "Jason Haugh"},
+]
+keywords = ["ai", "automation", "cron", "monitoring", "health-check", "token-optimization", "openclaw", "claude-code", "devops"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: System Administrators",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: System :: Monitoring",
+    "Topic :: System :: Systems Administration",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "requests>=2.33.0",
+    "pyyaml",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/oscarsterling/yburn"
+Repository = "https://github.com/oscarsterling/yburn"
+Issues = "https://github.com/oscarsterling/yburn/issues"
+
+[project.scripts]
+yburn = "yburn.cli:main"
+yburn-health = "yburn.flagship.yburn_health:main"
+yburn-watch = "yburn.flagship.yburn_watch:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["yburn*"]

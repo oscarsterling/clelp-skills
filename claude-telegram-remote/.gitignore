@@ -1,0 +1,11 @@
+*.pid
+*.log
+__pycache__/
+cache/
+node_modules/
+.env
+.env.local
+# Runtime session briefs. Contain raw conversation content and file paths.
+# Never commit: a careless `git add .` on a live install would push your
+# chat history to the public repo.
+saved-contexts/

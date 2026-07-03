@@ -1,0 +1,25 @@
+{
+  "name": "system-diagnostics",
+  "description": "Collects disk usage, CPU, memory, uptime, and key process status",
+  "version": "1.0",
+  "match_keywords": ["disk", "cpu", "memory", "uptime", "diagnostic", "diagnostics"],
+  "replaces_patterns": ["system diagnostic", "nightly diagnostic", "disk check"],
+  "parameters": [
+    {
+      "name": "processes_to_check",
+      "type": "list",
+      "required": false,
+      "default": [],
+      "description": "Process names to verify are running"
+    },
+    {
+      "name": "disk_threshold_pct",
+      "type": "int",
+      "required": false,
+      "default": 80,
+      "description": "Alert if any disk volume exceeds this usage percentage"
+    }
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}
