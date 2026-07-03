@@ -1,5 +1,7 @@
 # Clelp Skills
 
+![Clelp Skills: skills, MCP servers, and agent tools from the makers of Clelp](assets/clelp-skills-social-dark.png)
+
 **The official toolkit from the team behind [Clelp](https://clelp.ai).**
 
 Skills, MCP servers, and agent tools from the makers of Clelp. Gauntlet inside.
