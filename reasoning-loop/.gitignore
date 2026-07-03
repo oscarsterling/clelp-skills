@@ -1,0 +1,16 @@
+# Environment
+.env
+*.key
+
+# Output
+staging/
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+.venv/

@@ -1,0 +1,18 @@
+📊 *Cron Health Report*
+
+*Total:* 98 jobs
+*Enabled:* 85 | *Disabled:* 13
+*Healthy:* 83 | *Errors:* 2
+
+🔴 *Jobs with Errors:*
+  - Oscar X Morning Session: error (1 consecutive errors)
+    Error: cron: job execution timed out
+  - Clelp Weekly Link & Skill Audit: error (1 consecutive errors)
+    Error: cron: job execution timed out
+
+⏸️ *Disabled Jobs (13):*
+  - Nightly Session Reset
+  - heartbeat-review
+  - credential-rotation-reminder
+
+⚠️ *2 job(s) need attention*

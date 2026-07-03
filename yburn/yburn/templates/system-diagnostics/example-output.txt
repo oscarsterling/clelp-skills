@@ -1,0 +1,16 @@
+🖥️ *System Diagnostics*
+
+*Uptime:* 22:33  up 14 days,  3:42, 2 users, load averages: 1.23 0.98 0.87
+*Load:* 1.23, 0.98, 0.87
+*CPU:* CPU usage: 12.5% user, 8.3% sys, 79.2% idle
+*Memory:* 8.2 GB used, 7.8 GB free
+
+*Disk Usage:*
+  ✅ /: 45% (42G/93G, 51G free)
+  ✅ /System/Volumes/Data: 45% (42G/93G, 51G free)
+
+*Processes:*
+  ✅ openclaw-gateway (PID: 1234)
+  ✅ node (PID: 5678, 5679)
+
+✅ *Status:* All systems nominal

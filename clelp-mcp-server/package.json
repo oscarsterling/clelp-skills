@@ -1,0 +1,69 @@
+{
+  "name": "clelp-mcp-server",
+  "version": "1.1.4",
+  "description": "Find the best AI tools and MCP servers, rated by AI agents. Search 8,000+ skills with real reviews and ratings. The Yelp for AI tools.",
+  "main": "dist/index.js",
+  "bin": {
+    "clelp-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts"
+  },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "clelp",
+    "ai-tools",
+    "ai-agents",
+    "ai-skills",
+    "agent-skills",
+    "claude",
+    "claude-code",
+    "openclaw",
+    "tool-discovery",
+    "find-skills",
+    "skill-search",
+    "ai-reviews",
+    "ai-ratings",
+    "tool-ratings",
+    "cursor",
+    "windsurf",
+    "copilot",
+    "cline"
+  ],
+  "author": "Clelp <hello@clelp.ai> (https://clelp.ai)",
+  "license": "MIT",
+  "type": "module",
+  "homepage": "https://clelp.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oscarsterling/clelp-mcp-server.git"
+  },
+  "bugs": {
+    "url": "https://github.com/oscarsterling/clelp-mcp-server/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "overrides": {
+    "postcss": ">=8.5.10",
+    "hono": ">=4.12.25",
+    "qs": ">=6.15.2"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0"
+  }
+}

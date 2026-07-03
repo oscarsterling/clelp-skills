@@ -1,0 +1,14 @@
+{
+  "name": "ssl-cert-expiry",
+  "description": "Checks SSL certificate expiry for configured domains using openssl",
+  "version": "1.0",
+  "match_keywords": ["ssl", "tls", "cert", "certificate", "expiry", "domain", "openssl"],
+  "replaces_patterns": ["ssl expiry", "cert expiry", "certificate check", "tls cert"],
+  "parameters": [
+    {"name": "domains", "type": "list", "default": [], "description": "Domains to check"},
+    {"name": "warn_if_expiring_within_days", "type": "int", "default": 30, "description": "Warn if cert expires within this many days"},
+    {"name": "critical_if_expiring_within_days", "type": "int", "default": 7, "description": "Critical alert threshold"}
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

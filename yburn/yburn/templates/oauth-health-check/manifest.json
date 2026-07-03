@@ -1,0 +1,14 @@
+{
+  "name": "oauth-health-check",
+  "description": "Checks OAuth token files and environment variables for presence and expiry",
+  "version": "1.0",
+  "match_keywords": ["oauth", "token", "auth", "expiry", "refresh", "credential"],
+  "replaces_patterns": ["oauth health", "token expiry", "oauth token check", "refresh token check"],
+  "parameters": [
+    {"name": "token_file_paths", "type": "list", "default": [], "description": "List of token files to inspect"},
+    {"name": "token_env_vars", "type": "list", "default": [], "description": "Environment variables containing OAuth tokens"},
+    {"name": "warn_if_expiring_within_days", "type": "int", "default": 7, "description": "Warn if token expires within this many days"}
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

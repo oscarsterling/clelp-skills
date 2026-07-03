@@ -1,0 +1,32 @@
+{
+  "name": "api-endpoint-check",
+  "description": "Hits configured URLs and reports status codes and response times",
+  "version": "1.0",
+  "match_keywords": ["api", "endpoint", "url", "status", "uptime", "ping", "http", "availability"],
+  "replaces_patterns": ["api check", "endpoint check", "uptime check", "availability check", "url check"],
+  "parameters": [
+    {
+      "name": "endpoints",
+      "type": "list",
+      "required": true,
+      "default": [],
+      "description": "List of URLs to check"
+    },
+    {
+      "name": "timeout_seconds",
+      "type": "int",
+      "required": false,
+      "default": 10,
+      "description": "Request timeout in seconds"
+    },
+    {
+      "name": "expected_status",
+      "type": "int",
+      "required": false,
+      "default": 200,
+      "description": "Expected HTTP status code"
+    }
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}

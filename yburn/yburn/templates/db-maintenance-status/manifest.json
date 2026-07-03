@@ -1,0 +1,16 @@
+{
+  "name": "db-maintenance-status",
+  "description": "Checks database maintenance status using sqlite or postgres and reports query results or connectivity",
+  "version": "1.0",
+  "match_keywords": ["db", "database", "maintenance", "vacuum", "postgres", "sqlite", "query"],
+  "replaces_patterns": ["db maintenance", "database maintenance", "vacuum status", "db status"],
+  "parameters": [
+    {"name": "db_type", "type": "str", "default": "sqlite", "description": "Database type: sqlite or postgres"},
+    {"name": "sqlite_path", "type": "str", "default": "", "description": "Path to sqlite database file"},
+    {"name": "postgres_dsn", "type": "str", "default": "", "description": "Postgres DSN or psql connection string"},
+    {"name": "sql_query", "type": "str", "default": "", "description": "Optional query to run"},
+    {"name": "psql_binary", "type": "str", "default": "psql", "description": "psql executable name"}
+  ],
+  "output_format": "telegram_markdown",
+  "requires": []
+}
