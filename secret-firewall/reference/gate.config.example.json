@@ -1,0 +1,18 @@
+{
+  "egress_tools": {
+    "reply": true,
+    "Task": true,
+    "Agent": true,
+    "Write": false,
+    "Edit": false,
+    "Bash": false,
+    "WebFetch": true
+  },
+  "index_path": "./.secret-firewall/index.json",
+  "shadow_log": "./.secret-firewall/shadow.jsonl",
+  "protected_surface": "reply",
+  "breaker_window_s": 120,
+  "breaker_counter_path": "./.secret-firewall/breaker.json",
+  "use_entropy": false,
+  "extract_budget": 4000
+}

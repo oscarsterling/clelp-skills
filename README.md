@@ -28,6 +28,9 @@ Each tool is its own directory. Click through for setup and docs, or open its Cl
 | [reasoning-loop](./reasoning-loop) | A cross-model self-audit system that catches an AI's repeated mistakes and blind spots by having a different model review the behavior. | [clelp.ai/skill/reasoning-loop](https://clelp.ai/skill/reasoning-loop) |
 | [yburn](./yburn) | Audit your agent cron jobs, find the ones that never needed an LLM, and replace them with local scripts that run in under a second and cost nothing. | [clelp.ai/skill/yburn](https://clelp.ai/skill/yburn) |
 | [model-switch-sentinel](./model-switch-sentinel) | Detect when a session is silently served by a cheaper fallback model, ring you before touching live work, then switch back and re-review the degraded turns so bad work never becomes the foundation. | _listing pending_ |
+| [prompt-injection-guard](./prompt-injection-guard) | A harness-level hook that refuses forged or spoofed inbound before a tool-capable agent acts on it, detecting the structural signatures of a faked operator command instead of trusting the model to catch them. | _listing pending_ |
+| [secret-firewall](./secret-firewall) | Block secret and credential values from leaving a tool-capable agent, and redact ones that surface in tool output. Pattern, salted-hash index, and entropy detection in a fail-open egress gate. | _listing pending_ |
+| [session-checkpoint](./session-checkpoint) | Keep a durable rolling snapshot of session state so a context reset or compaction never loses the thread, then recover cleanly from it. | _listing pending_ |
 
 ## How to install a tool
 

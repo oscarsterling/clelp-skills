@@ -1,0 +1,13 @@
+{
+  "role_labels": ["Human", "Assistant"],
+  "wrapper_tag": "channel",
+  "trusted_source_value": "your-trusted-channel-id",
+  "required_wrapper_attrs": ["source", "id", "ts"],
+  "id_attr": "id",
+  "ts_attr": "ts",
+  "future_ts_tolerance_s": 5,
+  "dedup_ttl_s": 600,
+  "dedup_cache_path": "./.inbound-guard/dedup-cache.json",
+  "on_block_command": "",
+  "soft_only": false
+}

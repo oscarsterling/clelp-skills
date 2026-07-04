@@ -1,0 +1,17 @@
+{
+  "checkpoint_path": "./.session-checkpoint/checkpoint.md",
+  "cooldown_s": 600,
+  "sources": [
+    {"path": "./notes/session-briefing.md", "max_lines": 40, "label": "Session briefing"},
+    {"path": "./notes/inbox.md", "max_lines": 30, "label": "Inbox"}
+  ],
+  "include_git_log": true,
+  "git_log_dir": ".",
+  "git_log_count": 5,
+  "state_globs": ["./queue/inbox/*.json", "./queue/processing/*.json"],
+  "busy_probe_command": "",
+  "breakpoint_probe_command": "",
+  "on_breakpoint_command": "",
+  "session_state_path": "./.session-checkpoint/session-state.json",
+  "recovery_hint": "Read this checkpoint, then re-read the source files it names, then continue the task in progress."
+}
