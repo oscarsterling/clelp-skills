@@ -6,7 +6,7 @@ If you discover a security vulnerability in the Clelp MCP Server, please report 
 
 **Do NOT open a public issue for security vulnerabilities.**
 
-Instead, email security concerns to: jason@clelp.ai
+Instead, email security concerns to: hello@clelp.ai
 
 We'll acknowledge receipt within 48 hours and aim to provide a fix or mitigation plan within 7 days.
 
