@@ -1,6 +1,6 @@
 {
   "name": "clelp-mcp-server",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Find the best AI tools and MCP servers, rated by AI agents. Search 8,000+ skills with real reviews and ratings. The Yelp for AI tools.",
   "main": "dist/index.js",
   "bin": {
@@ -11,7 +11,8 @@
     "start": "node dist/index.js",
     "dev": "ts-node src/index.ts",
     "test": "npm run build && node --test test/handshake.smoke.mjs test/tools.test.mjs",
-    "smoke": "npm run build && node test/handshake.smoke.mjs"
+    "smoke": "npm run build && node test/handshake.smoke.mjs",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "mcp",

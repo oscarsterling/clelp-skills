@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import { readFileSync } from "node:fs";
+import { pathToFileURL } from "node:url";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -8,13 +10,16 @@ import {
   Tool,
 } from "@modelcontextprotocol/sdk/types.js";
 
+const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8")) as { version: string };
+const VERSION = pkg.version;
+
 // Clelp API configuration
 const CLELP_API_URL = process.env.CLELP_API_URL || "https://clelp.ai/api";
 const CLELP_API_KEY = process.env.CLELP_API_KEY || "";
 
 // Security: Validate API URL domain
 const ALLOWED_API_DOMAINS = ["clelp.ai", "www.clelp.ai", "localhost"];
-function validateApiUrl(url: string): boolean {
+export function validateApiUrl(url: string): boolean {
   try {
     const parsed = new URL(url);
     return ALLOWED_API_DOMAINS.some(d => parsed.hostname === d || parsed.hostname.endsWith(`.${d}`));
@@ -40,7 +45,8 @@ const SKILL_ID_PATTERN = /^[a-zA-Z0-9_@./-]{1,100}$/;
 // Rate limiting state (in-memory)
 const rateLimitState: Map<string, { count: number; resetTime: number }> = new Map();
 
-const MAX_RATINGS_PER_DAY = 10;
+// Advisory client-side rate limit only; the Clelp API server enforces the authoritative limit.
+export const MAX_RATINGS_PER_DAY = 10;
 const MIN_COMMENTARY_LENGTH = 20;
 
 // Security: Fetch with timeout
@@ -126,7 +132,7 @@ const tools: Tool[] = [
 ];
 
 // Helper: Check rate limit
-function checkRateLimit(apiKey: string): { allowed: boolean; remaining: number; resetIn?: number } {
+export function checkRateLimit(apiKey: string): { allowed: boolean; remaining: number; resetIn?: number } {
   const now = Date.now();
   const dayMs = 24 * 60 * 60 * 1000;
   
@@ -148,7 +154,7 @@ function checkRateLimit(apiKey: string): { allowed: boolean; remaining: number; 
   return { allowed: true, remaining: MAX_RATINGS_PER_DAY - state.count };
 }
 
-function incrementRateLimit(apiKey: string) {
+export function incrementRateLimit(apiKey: string) {
   const state = rateLimitState.get(apiKey);
   if (state) {
     state.count++;
@@ -194,7 +200,7 @@ async function clelpAPI(endpoint: string, options: RequestInit = {}): Promise<an
 }
 
 // Helper: Resolve slug to UUID by searching
-async function resolveSkillId(skillIdOrSlug: string): Promise<string> {
+export async function resolveSkillId(skillIdOrSlug: string): Promise<string> {
   // If it looks like a UUID, return as-is
   const uuidPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
   if (uuidPattern.test(skillIdOrSlug)) {
@@ -210,7 +216,7 @@ async function resolveSkillId(skillIdOrSlug: string): Promise<string> {
 }
 
 // Tool handlers
-async function handleSearch(args: { query: string; category?: string; type?: string; limit?: number }) {
+export async function handleSearch(args: { query: string; category?: string; type?: string; limit?: number }) {
   // Security: Validate input lengths
   const query = (args.query || "").slice(0, MAX_QUERY_LENGTH);
   const category = args.category ? args.category.slice(0, MAX_CATEGORY_LENGTH) : undefined;
@@ -276,7 +282,7 @@ async function handleGetSkill(args: { skill_id: string }) {
   };
 }
 
-async function handleRate(args: { 
+export async function handleRate(args: { 
   skill_id: string; 
   claws: number; 
   commentary: string;
@@ -349,7 +355,7 @@ async function handleRate(args: {
 const server = new Server(
   {
     name: "clelp-mcp",
-    version: "1.1.2",
+    version: VERSION,
   },
   {
     capabilities: {
@@ -411,7 +417,9 @@ async function main() {
   console.error("Clelp MCP server running on stdio");
 }
 
-main().catch((error) => {
-  console.error("Fatal error:", error);
-  process.exit(1);
-});
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+  main().catch((error) => {
+    console.error("Fatal error:", error);
+    process.exit(1);
+  });
+}
