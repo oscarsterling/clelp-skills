@@ -1,0 +1,21 @@
+{
+  "background": {
+    "type": "linear_gradient",
+    "angle_deg": 135,
+    "stops": [
+      {"pos": 0.0, "color": "#c96a2e"},
+      {"pos": 0.55, "color": "#1a1540"},
+      {"pos": 1.0, "color": "#0b0f1a"}
+    ]
+  },
+  "grain": {"enabled": true, "opacity": 0.05, "seed": 7},
+  "avatar_zone": {"x0": 0, "y0": 260, "x1": 320, "y1": 500},
+  "copy_lines": [
+    {"text": "It exists.", "role": "setup", "size_px": 50, "color": "#9fb3c8"},
+    {"text": "But does it work?", "role": "payoff", "size_px": 64, "color": "#ffffff"}
+  ],
+  "copy_left_margin": 620,
+  "copy_top": 190,
+  "scrim": {"enabled": true, "opacity": 0.35, "padding": 24},
+  "lockup": {"text": "Signal Sweep", "size_px": 28, "color": "#ffffff"}
+}
