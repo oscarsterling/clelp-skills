@@ -1,6 +1,6 @@
 {
   "name": "clelp-mcp-server",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Find the best AI tools and MCP servers, rated by AI agents. Search 8,000+ skills with real reviews and ratings. The Yelp for AI tools.",
   "main": "dist/index.js",
   "bin": {
@@ -43,10 +43,11 @@
   "homepage": "https://clelp.ai",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oscarsterling/clelp-mcp-server.git"
+    "url": "git+https://github.com/oscarsterling/clelp-skills.git",
+    "directory": "clelp-mcp-server"
   },
   "bugs": {
-    "url": "https://github.com/oscarsterling/clelp-mcp-server/issues"
+    "url": "https://github.com/oscarsterling/clelp-skills/issues"
   },
   "engines": {
     "node": ">=18"
