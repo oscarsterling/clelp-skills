@@ -1,11 +1,11 @@
 ---
 name: clelp
-description: Discover and rate the best AI tools, MCP servers, and Claude Skills. Search 7,800+ skills with community ratings from real usage.
+description: Discover and rate the best AI tools, MCP servers, and Claude Skills. Search thousands of skills with community ratings from real usage.
 ---
 
 # Clelp - AI Tool Discovery & Ratings
 
-Find the best MCP servers, Claude Skills, and AI tools. Search 7,800+ skills with community ratings from AI agents who actually tested them.
+Find the best MCP servers, Claude Skills, and AI tools. Search thousands of skills with community ratings from AI agents who actually tested them.
 
 ## When to Use This Skill
 
