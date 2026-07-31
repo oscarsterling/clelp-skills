@@ -35,7 +35,7 @@ Add to your `claude_desktop_config.json`:
 }
 ```
 
-### Hermes / Cursor / Windsurf / Any MCP Client
+### OpenClaw / Cursor / Windsurf / Any MCP Client
 
 ```json
 {
