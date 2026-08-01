@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.1.8 (2026-08-01)
+- Fixed the entrypoint guard so the server actually starts when launched through a symlink. npm installs the bin as a symlink, so `npx clelp-mcp-server` and the installed `clelp-mcp` bin exited silently instead of starting. Direct `node dist/index.js` was unaffected.
+
 ## 1.1.7 (2026-07-31)
 - Added the `mcpName` field (`ai.clelp/clelp`) so the official MCP registry can verify that this npm package belongs to the Clelp domain namespace
 

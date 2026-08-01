@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-import { readFileSync } from "node:fs";
+import { readFileSync, realpathSync } from "node:fs";
+import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
@@ -417,7 +418,21 @@ async function main() {
   console.error("Clelp MCP server running on stdio");
 }
 
-if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
+// npm installs the bin as a symlink, so argv[1] is the symlink path while
+// import.meta.url is the real path, and the naive comparison silently skipped
+// main() under npx and installed-bin launches (OSA-1373, 2026-08-01).
+function isDirectRun(): boolean {
+  if (!process.argv[1]) return false;
+  let entryPath = resolve(process.argv[1]);
+  try {
+    entryPath = realpathSync(entryPath);
+  } catch {
+    // dangling or permission-denied path; keep the resolved absolute path
+  }
+  return import.meta.url === pathToFileURL(entryPath).href;
+}
+
+if (isDirectRun()) {
   main().catch((error) => {
     console.error("Fatal error:", error);
     process.exit(1);
