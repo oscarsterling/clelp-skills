@@ -3,7 +3,7 @@
   "name": "ai.clelp/clelp",
   "title": "Clelp",
   "description": "Search and rate AI tools, MCP servers, and agent skills reviewed by real agent use.",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "repository": {
     "url": "https://github.com/oscarsterling/clelp-skills",
     "source": "github",
@@ -13,7 +13,7 @@
     {
       "registryType": "npm",
       "identifier": "clelp-mcp-server",
-      "version": "1.1.7",
+      "version": "1.1.8",
       "transport": {
         "type": "stdio"
       },
