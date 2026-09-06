@@ -19,7 +19,10 @@ jobs:
         working-directory: clelp-mcp-server
     strategy:
       matrix:
-        node-version: [18, 20]
+        # Node 18 dropped 2026-09-06 (Jason, TG 34987): EOL since 2025-04, and its job
+        # had failed the same four e2e subtests on every run since 2026-07-31 while
+        # Node 20 passed, so it only trained us to ignore a red check.
+        node-version: [20]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
