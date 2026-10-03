@@ -48,16 +48,16 @@ exception when insufficient_privilege then
   raise notice 'PASS: anon insert denied';
 end $$;
 
+reset role;
 do $$
 begin
-  perform notes_private.maintenance_note_count();
-  raise exception 'FAIL: anon called private maintenance function';
-exception when insufficient_privilege then
+  if has_function_privilege('anon', 'notes_private.maintenance_note_count()', 'EXECUTE')
+    or has_schema_privilege('anon', 'notes_private', 'USAGE') then
+    raise exception 'FAIL: anon can call private maintenance function';
+  end if;
   raise notice 'PASS: anon cannot call private maintenance function';
 end $$;
-
-reset role;
--- The calls above can fail on schema USAGE or table SELECT before EXECUTE is checked, so check function ACLs directly.
+-- Check function ACLs directly so an unintended grant is visible even without schema USAGE.
 do $$
 begin
   if has_function_privilege('anon', 'notes_private.maintenance_note_count()', 'EXECUTE')
@@ -69,16 +69,17 @@ begin
   end if;
   raise notice 'PASS: exposed roles hold only the intended EXECUTE grants';
 end $$;
+do $$
+begin
+  if has_function_privilege('authenticated', 'notes_private.maintenance_note_count()', 'EXECUTE')
+    or has_schema_privilege('authenticated', 'notes_private', 'USAGE') then
+    raise exception 'FAIL: A can call private maintenance function';
+  end if;
+  raise notice 'PASS: A cannot call private maintenance function';
+end $$;
 select set_config('request.jwt.claims', json_build_object('sub', '10000000-0000-4000-8000-000000000001', 'role', 'authenticated')::text, true);
 select set_config('request.jwt.claim.sub', '10000000-0000-4000-8000-000000000001', true);
 set local role authenticated;
-do $$
-begin
-  perform notes_private.maintenance_note_count();
-  raise exception 'FAIL: A called private maintenance function';
-exception when insufficient_privilege then
-  raise notice 'PASS: A cannot call private maintenance function';
-end $$;
 do $$
 declare actual uuid[];
 begin

@@ -53,12 +53,12 @@ Bad patterns: `examples/bad-rls-off.sql`, `examples/bad-anon-insert-with-check-t
 
 ## Phase 3: Probe on local or staging
 
-> **Known issue (fix in progress):** on some Supabase Postgres 17.6.1.x images, a call by `anon` or `authenticated` to a function they cannot execute crashes the database server instead of returning "permission denied" ([supabase/postgres#2112](https://github.com/supabase/postgres/issues/2112)). `examples/probe-roles.sql` makes such a call. Until this note is removed, run the probe only on a local Supabase image at 17.6.1.095, or on a project upgraded past the affected images.
-
 - [ ] Apply the reviewed file to staging with `psql "$STAGING_DATABASE_URL" -X -v ON_ERROR_STOP=1 --single-transaction -f migrations/<timestamp>_notes.sql` before running the Phase 3 probe there. Without it: the probe tests an older schema instead of the migration.
 - [ ] Run `psql "$STAGING_DATABASE_URL" -X -q -v ON_ERROR_STOP=1 -c "set probe.target = 'staging'" -f examples/probe-roles.sql` through a direct or session-mode connection. Check that psql exits with status 0, read its complete error output, and paste every PASS notice into the review. Without it: a failed run can print some PASS lines first, and transaction pooling can discard the target setting before the probe file runs.
 
 The probe writes rows in `auth.users` and `public.notes`, takes locks, fires triggers, and rolls back its rows and cascades. Rollback cannot undo non-transactional effects such as HTTP, dblink, or external queues. Production needs `probe.target=production` and `probe.reviewed_triggers` set to the exact sorted comma list of `schema.table:trigger` entries for enabled user triggers directly on those two tables, for example `auth.users:on_auth_user_created`, or `none` when empty. Also review triggers on tables those triggers or cascades write to; the list does not cover them. Confirm all reviewed triggers have no non-transactional effects before running it there. Use the read-only audit on live databases by default.
+
+On some Supabase Postgres 17.6.1.x images (supabase/postgres#2112), a reserved role calling a function it cannot execute crashes the server, so the probe checks privileges instead of calling. Upgrade the project if a function call by anon or authenticated ever drops the connection.
 
 
 ## Phase 4: Review, then apply
