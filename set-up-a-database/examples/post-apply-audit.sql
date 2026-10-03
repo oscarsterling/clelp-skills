@@ -79,14 +79,17 @@ with policy_expressions as (
       '[a-z_][a-z_0-9]*=\(*((select)?auth\.uid\(\)(asuid)?)\)*' ||
       '|\(*((select)?auth\.uid\(\)(asuid)?)\)*=[a-z_][a-z_0-9]*' ||
       '|\(*storage\.foldername\(name\)\)*\[1\]=\(*((select)?auth\.uid\(\)(asuid)?)\)*::text' ||
+      '|\(*((select)?auth\.uid\(\)(asuid)?)\)*::text=\(*storage\.foldername\(name\)\)*\[1\]' ||
       ')\)*(and\(*bucket_id=''[^'']*''(::text)?\)*)?\)*$')
       or compact ~ ('^\(*bucket_id=''[^'']*''(::text)?\)*and\(*(' ||
       '[a-z_][a-z_0-9]*=\(*((select)?auth\.uid\(\)(asuid)?)\)*' ||
       '|\(*((select)?auth\.uid\(\)(asuid)?)\)*=[a-z_][a-z_0-9]*' ||
       '|\(*storage\.foldername\(name\)\)*\[1\]=\(*((select)?auth\.uid\(\)(asuid)?)\)*::text' ||
+      '|\(*((select)?auth\.uid\(\)(asuid)?)\)*::text=\(*storage\.foldername\(name\)\)*\[1\]' ||
       ')\)*$') then null
     when btrim(expr, ' ()') = 'true' or
-      regexp_replace(expr, '\(*[[:space:]]*(SELECT[[:space:]]+)?auth\.uid\(\)([[:space:]]+AS[[:space:]]+uid)?[[:space:]]*\)*[[:space:]]+IS[[:space:]]+(NOT[[:space:]]+)?NULL', '', 'gi') not ilike '%auth.uid()%'
+      (regexp_replace(expr, '\(*[[:space:]]*(SELECT[[:space:]]+)?auth\.uid\(\)([[:space:]]+AS[[:space:]]+uid)?[[:space:]]*\)*[[:space:]]+IS[[:space:]]+(NOT[[:space:]]+)?NULL', '', 'gi') not ilike '%auth.uid()%'
+        and expr not ilike '%auth.jwt()%')
       then open_finding
     else 'policy-needs-review' end as finding
   from patterns
