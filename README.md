@@ -32,6 +32,7 @@ Each tool is its own directory. Click through for setup and docs, or open its Cl
 | [secret-firewall](./secret-firewall) | Block secret and credential values from leaving a tool-capable agent, and redact ones that surface in tool output. Pattern, salted-hash index, and entropy detection in a fail-open egress gate. | _listing pending_ |
 | [session-checkpoint](./session-checkpoint) | Keep a durable rolling snapshot of session state so a context reset or compaction never loses the thread, then recover cleanly from it. | _listing pending_ |
 | [set-up-a-database](./set-up-a-database) | A security-first checklist for Supabase tables, policies, functions, grants and migrations, with a post-apply audit and a per-role probe that check what each role can actually read and write. | _listing pending_ |
+| [source-code-review](./source-code-review) | A read-only security review procedure for web app source: an entry-point census, auth and data-access checks, database catalog queries, and a report where every finding names its attack path and every dismissal names its guard. A careful layer, not a guarantee. | _listing pending_ |
 
 ## How to install a tool
 
