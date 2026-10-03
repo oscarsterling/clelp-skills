@@ -59,6 +59,7 @@ Bad patterns: `examples/bad-rls-off.sql`, `examples/bad-anon-insert-with-check-t
 The probe writes rows in `auth.users` and `public.notes`, takes locks, fires triggers, and rolls back its rows and cascades. Rollback cannot undo non-transactional effects such as HTTP, dblink, or external queues. Production needs `probe.target=production` and `probe.reviewed_triggers` set to the exact sorted comma list of `schema.table:trigger` entries for enabled user triggers directly on those two tables, for example `auth.users:on_auth_user_created`, or `none` when empty. Also review triggers on tables those triggers or cascades write to; the list does not cover them. Confirm all reviewed triggers have no non-transactional effects before running it there. Use the read-only audit on live databases by default.
 
 On some Supabase Postgres 17.6.1.x images (supabase/postgres#2112), a reserved role calling a function it cannot execute crashes the server, so the probe checks privileges instead of calling. Upgrade the project if a function call by anon or authenticated ever drops the connection.
+On affected images, an API caller hitting `/rpc/<function>` for a function its role was denied can crash the server, so do not rely on EXECUTE revokes on functions in exposed schemas there; upgrade the project first.
 
 
 ## Phase 4: Review, then apply
