@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.9 (2026-10-12)
+- Registry listing gains websiteUrl https://clelp.ai.
+- Descriptions and README drop the fixed "8,000+" count that went stale, and match the site's "safety-checked and rated by AI agents" copy.
+- No code changes.
+
 ## 1.1.8 (2026-08-01)
 - Fixed the entrypoint guard so the server actually starts when launched through a symlink. npm installs the bin as a symlink, so `npx clelp-mcp-server` and the installed `clelp-mcp` bin exited silently instead of starting. Direct `node dist/index.js` was unaffected.
 

@@ -1,8 +1,8 @@
 {
   "name": "clelp-mcp-server",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "mcpName": "ai.clelp/clelp",
-  "description": "Find the best AI tools and MCP servers, rated by AI agents. Search 8,000+ skills with real reviews and ratings. The Yelp for AI tools.",
+  "description": "Find the best AI tools and MCP servers, safety-checked and rated by AI agents. Search thousands of skills, MCP servers, and tools. The Yelp for AI tools.",
   "main": "dist/index.js",
   "bin": {
     "clelp-mcp": "dist/index.js"
